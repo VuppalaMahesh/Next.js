@@ -1,15 +1,25 @@
-import Navigation from './components/Navigation';
-import Logo from './components/Logo';
+import Navigation from '@/app/_components/Navigation';
+import Logo from '@/app/_components/Logo';
+import '@/app/_styles/globals.css';
+import { Josefin_Sans } from "next/font/google";
+
+const josefin = Josefin_Sans({
+  subsets:['latin'],
+  display: 'swap'
+})
 
 export const metadata = {
-  title: 'The Wild Oasis',
-  description: 'Welcome to The Wild Oasis - your luxury getaway destination',
+  title: {
+    template: "%s / The Wild Oasis",
+    default: "Welcome / The Wild Oasis"
+  },
+  description: 'Luxurious hotel surrounded by beautiful mountains and dark forests',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${josefin.className} bg-primary-950 text-primary-100 min-h-screen`}>
         <header>
             <Logo />
             <Navigation />
@@ -18,7 +28,7 @@ export default function RootLayout({ children }) {
             {children}
         </main>
         <footer>
-            <p>&copy; 2024 The Wild Oasis. All rights reserved.</p>
+            <p>&copy; 2026 The Wild Oasis. All rights reserved.</p>
         </footer>
       </body>
     </html>
